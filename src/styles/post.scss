@@ -1,0 +1,22 @@
+.hero-content {
+  display: block !important;
+  margin: 4em 0 2em;
+
+  .subtitle {
+    margin-bottom: 0;
+    font-size: 1em;
+  }
+
+  a {
+    font-size: 0.7em;
+    text-decoration: underline;
+  }
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 2em;
+  color: var(--text);
+}

@@ -1,53 +1,50 @@
 <template>
   <div>
     <div class="wrapper">
-      <h2 class="title">
-        Recent Post
-      </h2>
       <Loading v-if="getLoad" />
       <ul
-        v-else-if="recentPosts"
-        class="posts-container grid"
+        v-else-if="getPosts(page)"
+        class="posts-container"
       >
         <div
-          v-for="post in recentPosts.data"
+          v-for="post in getPosts(page).data"
           :key="post.slug"
         >
           <PostCard :post="post" />
         </div>
       </ul>
-    </div>
 
-    <LoadMore />
+      <PostNavigation
+        v-if="!getLoad && getPosts(page)"
+        :nav="getPosts(page)"
+        :pagination="pagination"
+      />
+    </div>
   </div>
 </template>
 
 <style lang="scss">
-@import "@/styles/home";
-.grid {
-  display: grid !important;
-  justify-content: space-around;
-  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-}
+@import "@/styles/posts";
 </style>
 
 <script>
-import { mapGetters, mapActions } from 'vuex';
+
+import { mapActions, mapGetters } from 'vuex';
 
 import Loading from '@/components/Loading.vue';
+import PostNavigation from '@/components/PostNavigation.vue';
 import PostCard from '@/components/PostCard.vue';
-import LoadMore from '@/components/LoadMore.vue';
 
 export default {
   components: {
     Loading,
     PostCard,
-    LoadMore,
+    PostNavigation,
   },
 
   data() {
     return {
-      recentPosts: {},
+      page: 1,
     };
   },
 
@@ -59,14 +56,15 @@ export default {
   methods: {
     ...mapActions('blog', ['paginate']),
     checkData() {
-      if (typeof this.getPosts(1) === 'undefined') {
-        this.paginate(1).then(() => {
-          this.recentPosts = this.getPosts(1);
-        });
+      if (typeof this.getPosts(this.page) === 'undefined') {
+        this.paginate(this.page);
       } else {
         console.log('load from existing result');
-        this.recentPosts = this.getPosts(1);
       }
+    },
+    pagination(page) {
+      this.page = page;
+      this.checkData();
     },
   },
 

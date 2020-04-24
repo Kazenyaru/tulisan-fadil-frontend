@@ -1,0 +1,15 @@
+@import '@/styles/base.scss';
+
+.hero-content {
+  display: flex;
+  justify-content: center;
+  margin: 3em 0 2em;
+
+  .subtitle {
+    margin: 4em 0 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.37em;
+    background-color: var(--primary);
+  }
+}

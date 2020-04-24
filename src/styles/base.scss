@@ -1,0 +1,206 @@
+$primary: #f4f4f4; // #222831 #f4f4f4
+$accent: #8ec6c5; // #30475e  #8ec6c5
+$accent-dark: #6983aa; // #c1a57b #6983aa
+$unique: #8566aa; // #ececec  #8566aa
+
+$text: #222831;
+$text-dark: white;
+$border: #d1d5da;
+
+:root {
+  --primary: #{primary};
+  --accent: #{$accent};
+  --accent-dark: #{$accent-dark};
+  --unique: #{$unique};
+  --text: #{$text};
+  --text-dark: #{$text-dark};
+  --border: #{$border};
+}
+
+@import url('https://fonts.googleapis.com/css?family=Nunito&display=swap');
+@import url('https://github.githubassets.com/assets/gist-embed-3a7ef482c296bb1a3bcefcbf22eaa3b6.css');
+
+* {
+  font-family: 'Nunito', 'Open Sans', Helvetica, Arial, Verdana, 'Verdana Ref',
+    sans-serif;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--primary);
+  color: var(--text);
+}
+
+a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+img {
+  max-width: 100%;
+}
+
+.hero-container {
+  background: var(--accent-dark);
+  background-size: cover;
+}
+
+.hero-content {
+  display: flex;
+  justify-content: center;
+  margin: 3em 0 2em;
+  background: var(--accent-dark);
+
+  .subtitle {
+    margin: 4em 0 0;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.37em;
+    background-color: var(--primary);
+  }
+}
+
+.wrapper {
+  padding: 1.5em;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+
+  .logo {
+    font-weight: bold;
+  }
+
+  ul {
+    display: flex;
+
+    li a {
+      padding: 0 0.5em;
+      text-decoration: underline;
+    }
+  }
+}
+
+.wrapper {
+  .title {
+    display: block;
+    font-weight: bold;
+    font-size: 1.4em;
+    color: var(--text);
+    position: relative;
+  }
+
+  .title::before {
+    content: ' ';
+    position: absolute;
+    height: 5px;
+    width: 50px;
+    background: var(--unique);
+    top: 1.2em;
+  }
+}
+
+.posts-container {
+  margin-top: 2em;
+  color: var(--text);
+
+  .grid {
+    display: grid !important;
+    justify-content: space-around;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  }
+
+  li {
+    background-color: rgba($accent, 0.3);
+    margin: 0.5em 0.5em 1.5em;
+    padding: 0.8em;
+  }
+
+  .tagsstamp {
+    box-sizing: content-box;
+    display: flex;
+    justify-content: space-between;
+
+    svg {
+      fill: white;
+      height: 0.7em;
+      width: 0.7em;
+    }
+  }
+
+  .post-title {
+    font-size: 1.4em;
+    font-weight: bold;
+
+    &:hover {
+      color: var(--accent-dark);
+    }
+  }
+
+  span {
+    display: block;
+    font-size: 0.7em;
+    margin: 2em 0 2em;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+  }
+}
+
+.stamp {
+  width: fit-content;
+  font-size: 0.6em;
+  color: var(--text);
+  padding: 0.2rem 0.75rem;
+  background-image: linear-gradient(to right, $accent 0%, $unique 40%);
+  border-radius: 0 0.5rem 0.5rem 0;
+  margin: 0 0 2em;
+}
+
+@media (min-width: 500px) {
+}
+
+@media (min-width: 650px) {
+  body {
+    font-size: 14px;
+  }
+
+  .wrapper {
+    padding: 1.5em 4em;
+  }
+}
+
+@media (min-width: 853px) {
+  body {
+    font-size: 16px;
+  }
+
+  h2 {
+    font-size: 2.5em;
+  }
+
+  h2 {
+    text-align: left;
+    font-size: 2em;
+  }
+
+  .post-container {
+    padding-bottom: 4em;
+  }
+}
+
+@media (min-width: 1200px) {
+}

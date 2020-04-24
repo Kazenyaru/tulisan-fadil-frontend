@@ -1,29 +1,53 @@
 import Vue from 'vue';
-import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
+import Router from 'vue-router';
 
-Vue.use(VueRouter);
+import Home from '@/views/Home.vue';
+import Post from '@/views/Post.vue';
+import Posts from '@/views/Posts.vue';
+import Contact from '@/views/Contact.vue';
+import About from '@/views/About.vue';
+import NotFound from '@/views/NotFound.vue';
 
-const routes = [
-  {
-    path: '/',
-    name: 'Home',
-    component: Home,
-  },
-  {
-    path: '/about',
-    name: 'About',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-  },
-];
+Vue.use(Router);
 
-const router = new VueRouter({
+const router = new Router({
   mode: 'history',
   base: process.env.BASE_URL,
-  routes,
+  routes: [
+    {
+      path: '/',
+      name: 'home',
+      component: Home,
+      meta: { layout: 'default-layout' },
+    },
+    {
+      path: '/posts',
+      name: 'posts',
+      component: Posts,
+      meta: { layout: 'no-header-layout' },
+    },
+    {
+      path: '/post/:slug',
+      name: 'post',
+      component: Post,
+    },
+    {
+      path: '/contact',
+      name: 'contact',
+      component: Contact,
+    },
+    {
+      path: '/about',
+      name: 'about',
+      component: About,
+    },
+    {
+      path: '*',
+      name: '404',
+      component: NotFound,
+    },
+  ],
 });
+
 
 export default router;
